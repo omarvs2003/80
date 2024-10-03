@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- Reemplaza 'TU_CLIENT_ID_DE_PRODUCCION' con tu CLIENT_ID de producción -->
+    <meta charset="UTF-8">
+    <title>Pago con PayPal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Incluye Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluye el SDK de PayPal -->
     <script src="https://www.paypal.com/sdk/js?client-id=AS7DM-xV5avgeJkGknQKvdY37OvGNJcTdONBXXWTozm09nys4m7L63fKsaTKzFv2Pgz5DzAWud8fF84N"></script>
   </head>
   <body>
-    <h1>Pago con PayPal</h1>
-    <div id="paypal-button-container"></div>
+    <div class="container">
+      <h1 class="text-center mt-5">Pago con PayPal</h1>
+      <div id="paypal-button-container" class="d-flex justify-content-center mt-4"></div>
+    </div>
     <script>
       paypal.Buttons({
+        style: {
+          layout: 'vertical',
+          color: 'gold',
+          shape: 'rect',
+          label: 'paypal',
+          tagline: false
+        },
         createOrder: function(data, actions) {
           return actions.order.create({
             purchase_units: [{
@@ -23,7 +37,11 @@
             alert('Pago completado por: ' + details.payer.name.given_name);
           });
         }
-      }).render('#paypal-button-container');  // Renderiza el botón en el contenedor
+      }).render('#paypal-button-container');
     </script>
+    <!-- Incluye Bootstrap JS y dependencias (opcional, si necesitas funcionalidades de Bootstrap que requieren JavaScript) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </body>
 </html>
